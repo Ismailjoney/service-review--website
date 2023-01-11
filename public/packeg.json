@@ -1,0 +1,50 @@
+[
+    {
+        "name":"Reserve Picnic Bus service",
+        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0zJ6yzKydsnWeXwJ3JK6_K78-uTg0GZVe4A&usqp=CAU",
+        "price":"veiry to Location",
+        "location":"All bangladesh",
+        "description":"Wedding & any Event service: We are very responsible to provide you transportation service for wedding or any type of Event Management like Fair, any Opening & Closing ceremony, any Sales & Promotional Program, Corporate day out, Corporate Picnic program with the quick responses.Airport transfers: We have very common fleet as we will wait for you at the arrival lounge inside the airport to receive you and Drop you anywhere inside the city or any of your required places in Bangladesh as an airport pick up & drop." ,
+        "view_details":"contact us +880188015879 or visite our website"
+    },
+    {
+        "name":  "Ac Bus Service",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAIjZhz5AYSXF4t6Uf57OUDHfl5FWiSLnbvA&usqp=CAU",
+        "price":"1200 tk bd",
+        "location":"Chittagong To  Benapol,jassor",
+        "description":"start time Chittagong at 8.30 am and Benapol,jassor Start time at 7.40pm",
+        "view_details":"contact us +880188015879 or visite our website"
+    },
+    {
+        "name":"Non Ac Bus Service",
+        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUDatPaRHSxV8M5ctC8-tsjSzT5Q29Yl1BDA&usqp=CAU",
+        "price": "950tk bd",
+        "location": "Satkhira to Burimari,Lalmonirhat", 
+        "description": "satkhira start time at 4.20pm and burimari start time at 4.50pm",
+        "view_details":"contact us +880188015879 or visite our website"
+    },
+    {
+        "name":"Non Ac Bus Service" ,
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-nIqX3hj4lrNKHVzrFJXPf1zzIqzUA_8qNg&usqp=CAU",
+        "price": "1000tk bd" ,
+        "location":"Barisal to Dhaka"  ,
+        "description":"Barishal start time at 2.10 pm and Dhaka start time at 9.10pm" ,
+        "view_details":"contact us +880188015879 or visite our website"
+    },
+    {
+        "name": "Ac Bus Service",
+        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv9ROTvC5mIPy1VGfMerOvWtQNq9z7b-O-cg&usqp=CAU",
+        "price":"1400tk bd",
+        "location":"Barisal to LalMonirhat",
+        "description":"Barishal Start time at 5.15pm and Lalmonirhat starti time at 6.15pm",
+        "view_details":"contact us +880188015879 or visite our website"
+    },
+    {
+        "name": "Non Ac Bus Service",
+        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz4s0RMmyLcRo6Zxa6Kdr94STUYx2efE7RMQ&usqp=CAU" ,
+        "price":"1000tk bd",
+        "location":"Barisal to Cox Bazzar"  ,
+        "description": "Barishal start time at 8.20pm and Cox Bazzar start time at 10.30pm" ,
+        "view_details":"contact us +880188015879 or visite our website"
+    }
+]
