@@ -8,22 +8,19 @@ const AllServiceCardInfo = () => {
     const [comments, setComments] = useState([])
 
 
-    const { name, img, price, location, description, view_details,_id} = service;
+    const { name, img, price, location, description, view_details, _id } = service;
+
     const date = new Date()
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/comments`)
-            .then(res => res.json())
-            .then(data => {
-                setComments(data)
-            })
-    })
+    
+
 
     const handdleSubmitComment = event => {
         event.preventDefault()
 
         const cmntmsg = event.target.text.value;
-        const commentmessage = { cmntmsg, date }
+        const id = _id
+        const commentmessage = { cmntmsg, id, date }
         event.target.reset()
 
         fetch(`http://localhost:5000/comments`, {
@@ -35,13 +32,30 @@ const AllServiceCardInfo = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if(data.acknowledged){
-                    cmntmsg.reset();
-                 }
+                console.log(data)
+                 
+                // if (data.acknowledged) {
+                    
+                // }
             })
             .catch(error => console.log(error))
 
     }
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/comments`)
+            .then(res => res.json())
+            .then(data => {                
+                const productComment = data.filter(d => d.id ===  _id)
+                const comment = comments.filter(cmnt => cmnt.id === _id)
+                const newComment =[...productComment,  comment]
+                setComments(newComment)
+                 
+                
+            })
+    },[comments])
+
+    
 
 
 
@@ -71,12 +85,12 @@ const AllServiceCardInfo = () => {
                     </form>
                 </div>
                 {
-                 
-                comments.map(comment => <Comments
-                key={comment._id}
-                comment={comment}
-                ></Comments>)
-            }
+
+                    comments.map(comment => <Comments
+                        id={comment._id}
+                        comment={comment}
+                    ></Comments>)
+                }
 
             </div>
         </div>

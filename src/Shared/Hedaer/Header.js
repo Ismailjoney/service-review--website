@@ -6,6 +6,8 @@ const Header = () => {
         <li><Link to='/'>HOME</Link></li>
         <li><Link to='/blog'>BLOG</Link></li>
         <li><Link to='/service'>SERVICE</Link></li>
+        <li><Link to='/login'>LOG IN</Link></li>
+         
     </>
     return (
         <div className="navbar bg-base-100">
@@ -18,7 +20,7 @@ const Header = () => {
                         {menubar}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <a className="btn btn-ghost normal-case text-xl bold"><span className='text-wwhite'>JoNy</span>TraVeLs</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

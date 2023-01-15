@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Comments = ({comment,key}) => {
-    const{cmntmsg} = comment;
+const Comments = ({comment }) => {
+    const{cmntmsg,date} = comment;
     return (
         <div>
-            <p>{cmntmsg}</p>
+            <p>{cmntmsg} <br /><span>{date}</span></p>
         </div>
     );
 };

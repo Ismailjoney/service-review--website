@@ -3,7 +3,7 @@ import React from 'react';
 const Spinner = () => {
     return (
         <div>
-            <progress className="progress w-56"></progress>
+           <button className="btn loading">loading</button>
         </div>
     );
 };
