@@ -6,7 +6,9 @@ import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home/Home";
 import AllServiceCardInfo from "../Pages/Home/OurService/AllServiceCardInfo/AllServiceCardInfo";
 import ShowAllServices from "../Pages/Home/OurService/ShowAllServices/ShowAllServices";
+import MyReview from "../Pages/MyReview/MyReview";
 import Service from "../Pages/Services/Service";
+import PrivetRoute from "./privetRoute/PrivetRoute";
  
 
 export const router = createBrowserRouter([
@@ -33,7 +35,7 @@ export const router = createBrowserRouter([
         },
         {
             path:'/allservicecardinfo/:id',
-            element:<AllServiceCardInfo></AllServiceCardInfo>,
+            element:<PrivetRoute><AllServiceCardInfo></AllServiceCardInfo></PrivetRoute>,
             loader:({params}) => fetch(`http://localhost:5000/service/${params.id}`)
         },
         {
@@ -43,6 +45,10 @@ export const router = createBrowserRouter([
         {
             path: '/reg',
             element:<Registration></Registration>
+        },
+        {
+            path:'/review',
+            element: <MyReview></MyReview>
         }
          
     ]

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Spinner = () => {
     return (
-        <div>
-           <button className="btn loading">loading</button>
+        <div className='flex justify-center align-center'>
+           <button >loading</button>
         </div>
     );
 };

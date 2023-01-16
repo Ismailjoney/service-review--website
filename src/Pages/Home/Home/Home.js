@@ -5,6 +5,7 @@ import OurInformation from '../OurInformation/OurInformation';
 import OurService from '../OurService/OurService';
 
 const Home = () => {
+
     return (
         <div>
             <Banner></Banner>

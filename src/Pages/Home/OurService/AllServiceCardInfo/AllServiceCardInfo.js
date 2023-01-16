@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthorContext } from '../../../../Context/AuthContext';
 import Comments from './Comments';
 
 
 const AllServiceCardInfo = () => {
     const service = useLoaderData()
+    const {user} = useContext(AuthorContext)
     const [comments, setComments] = useState([])
-
+    const {email} = user;
+   
 
     const { name, img, price, location, description, view_details, _id } = service;
 
@@ -20,7 +23,7 @@ const AllServiceCardInfo = () => {
 
         const cmntmsg = event.target.text.value;
         const id = _id
-        const commentmessage = { cmntmsg, id, date }
+        const commentmessage = { cmntmsg, id, date,email }
         event.target.reset()
 
         fetch(`http://localhost:5000/comments`, {
@@ -50,9 +53,7 @@ const AllServiceCardInfo = () => {
                 const comment = comments.filter(cmnt => cmnt.id === _id)
                 const newComment =[...productComment,  comment]
                 setComments(newComment)
-                 
-                
-            })
+               })
     },[comments])
 
     
@@ -80,7 +81,7 @@ const AllServiceCardInfo = () => {
                 <h2>Add Your Comment: </h2>
                 <div>
                     <form onSubmit={handdleSubmitComment} action="">
-                        <textarea name="text" className="textarea textarea-info w-96 mt-2" placeholder="add comment"></textarea><br />
+                        <textarea name="text" className="textarea textarea-info w-96 mt-2" placeholder="add comment" required></textarea><br />
                         <button className="btn  btn-sm btn-primary px-7 ">send</button>
                     </form>
                 </div>

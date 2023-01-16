@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthorContext } from '../../Context/AuthContext';
 
 const Header = () => {
+    const { user,logOut } = useContext(AuthorContext)
     const menubar = <>
-        <li><Link to='/'>HOME</Link></li>
-        <li><Link to='/blog'>BLOG</Link></li>
-        <li><Link to='/service'>SERVICE</Link></li>
-        <li><Link to='/login'>LOG IN</Link></li>
-         
+
+        {
+            user?.email ?
+                <>
+                    <li><Link to='/'>HOME</Link></li>
+                    <li><Link to='/blog'>BLOG</Link></li>
+                    <li><Link to='/service'>SERVICE</Link></li>
+                    <li><Link to='/review'>MY REVIEW</Link></li>
+                </>
+                :
+                <>
+                    <li><Link to='/'>HOME</Link></li>
+                    <li><Link to='/blog'>BLOG</Link></li>
+                    <li><Link to='/service'>SERVICE</Link></li>
+                </>
+        }
     </>
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch();
+    }
+
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -28,7 +49,16 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Get started</a>
+                {
+
+                    user ?
+                        <button onClick={handleLogOut}>
+                            <Link to='/login'>LogOut</Link>
+                        </button>
+                        :
+                        <Link to='/login'>LOG IN</Link>
+
+                }
             </div>
         </div>
     );
