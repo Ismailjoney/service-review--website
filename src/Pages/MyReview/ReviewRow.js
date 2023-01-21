@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const ReviewRow = ({ review }) => {
-    const { cmntmsg, date, email } = review;
+const ReviewRow = ({ review, handleDelete }) => {
+    const { _id, cmntmsg, date, email, } = review;
+    console.log(review);
+
     return (
         <tr>
-            <td>{email}</td>
-            <td>{date}</td>
-            <td>{cmntmsg}</td>
+            <th>
+                <label>
+                    <button onClick={() => handleDelete(_id)} className='btn btn-ghost'>Delete Now</button>
+                </label>
+            </th>
+            <td>
+                <div className="flex   space-x-3">
+                    <div>
+                        <div className="font-bold">{email}</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div className="font-bold">{cmntmsg}</div>
+            </td>
+            <td>
+                <div className="font-bold">{date}</div>
+            </td>
         </tr>
 
     );

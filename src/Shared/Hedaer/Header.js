@@ -11,14 +11,13 @@ const Header = () => {
                 <>
                     <li><Link to='/'>HOME</Link></li>
                     <li><Link to='/blog'>BLOG</Link></li>
-                    <li><Link to='/service'>SERVICE</Link></li>
+                    <li><Link to='/addservice'>ADD YOUR SERVICE</Link></li>
                     <li><Link to='/review'>MY REVIEW</Link></li>
                 </>
                 :
                 <>
                     <li><Link to='/'>HOME</Link></li>
                     <li><Link to='/blog'>BLOG</Link></li>
-                    <li><Link to='/service'>SERVICE</Link></li>
                 </>
         }
     </>

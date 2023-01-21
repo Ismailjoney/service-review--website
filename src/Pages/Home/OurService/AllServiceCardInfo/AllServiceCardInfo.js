@@ -9,14 +9,9 @@ const AllServiceCardInfo = () => {
     const {user} = useContext(AuthorContext)
     const [comments, setComments] = useState([])
     const {email} = user;
-   
-
-    const { name, img, price, location, description, view_details, _id } = service;
-
-    const date = new Date()
-
     
-
+    const { name, img, price, location, description, view_details, _id } = service;
+    const date = new Date()
 
     const handdleSubmitComment = event => {
         event.preventDefault()
@@ -42,24 +37,20 @@ const AllServiceCardInfo = () => {
                 // }
             })
             .catch(error => console.log(error))
-
     }
 
     useEffect(() => {
         fetch(`http://localhost:5000/comments`)
             .then(res => res.json())
-            .then(data => {                
-                const productComment = data.filter(d => d.id ===  _id)
-                const comment = comments.filter(cmnt => cmnt.id === _id)
-                const newComment =[...productComment,  comment]
+            .then(data => {   
+                console.log(data)             
+                const productComments  = data.filter(d => d.id ===  _id)//--specific product er comment pacci(d.id hocce producut id)
+                const olderComents = comments.filter(cmnt => cmnt.id === _id)//--coments pacci
+                const newComment =[ olderComents, ...productComments, ]
                 setComments(newComment)
                })
     },[comments])
-
-    
-
-
-
+ 
     return (
         <div className='flex justify-evenly '>
             <div className='flex justify-center mt-20 my-20'>

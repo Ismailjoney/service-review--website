@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ShowAllServiceCard = ({data}) => {
     
-    const { name, img, price, location, description, view_details,_id } = data;
+    const { name, img, location, description, _id } = data;
 
     return (
         <div className="card w-96 bg-base-100 shadow-xl">

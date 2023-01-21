@@ -15,11 +15,13 @@ import 'react-photo-view/dist/react-photo-view.css';
 
 
 const OurImageGallary = () => {
+
+    // const image = [collectioneight,collectionone,two,collectionthree,collectionfour,collectionsix,collectionseven,collectionten,nine]
     return (
-        <div className='mt-20 my-20'>
+        <div>
             <h2 className='text-3xl text-center my-14'>Our Image Gallary</h2>
-            <PhotoProvider>
-                <div id="gallary" className="grid grid-cols-4 gap-4 ">
+            <PhotoProvider> 
+                <div id="gallary" className="grid gap-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 justify-center align-middle">
                     <div className=''>
                         <PhotoView src={collectioneight} className="hover:border-spacing-14">
                             <img src={collectioneight} alt="bus" />
@@ -68,6 +70,8 @@ const OurImageGallary = () => {
                 </div>
             </PhotoProvider>
         </div>
+
+
     );
 };
 

@@ -2,12 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import Login from "../FormInfo/LogIn/Login";
 import Registration from "../FormInfo/Registration/Registration";
 import Main from "../Layout/Main";
+import AddService from "../Pages/AddService/AddService";
 import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home/Home";
 import AllServiceCardInfo from "../Pages/Home/OurService/AllServiceCardInfo/AllServiceCardInfo";
 import ShowAllServices from "../Pages/Home/OurService/ShowAllServices/ShowAllServices";
 import MyReview from "../Pages/MyReview/MyReview";
-import Service from "../Pages/Services/Service";
 import PrivetRoute from "./privetRoute/PrivetRoute";
  
 
@@ -25,8 +25,8 @@ export const router = createBrowserRouter([
             element: <Blog></Blog>
         },
         {
-            path:'/service',
-            element:<Service></Service>
+            path:'/addservice',
+            element:<AddService></AddService>
         },
         {
             path:'/showallservices',
