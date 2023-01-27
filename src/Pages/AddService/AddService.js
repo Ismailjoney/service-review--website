@@ -11,9 +11,8 @@ const AddService = () => {
 
         const form = event.target;
         const name = form.name.value
-        const email = user?.email;
+        const email = user.email;
         const imgurl = form.imgurl.value;
-        const price = form.price.value;
         const location = form.location.value;
         const description = form.description.value;
      
@@ -21,10 +20,10 @@ const AddService = () => {
             name,
             email,
             imgurl,
-            price,
             location,
             description,    
         }
+        console.log(userservice);
 
          fetch('http://localhost:5000/addservices', {
             method: 'POST',
@@ -35,7 +34,7 @@ const AddService = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 if (data.acknowledged) {
                      toast("Add Service Sucessfull",{
                             position: "top-center",
@@ -54,7 +53,6 @@ const AddService = () => {
            <form onSubmit={handdleSubmit}>
                 <input type="text" name="name" placeholder="Type service name" className="input input-bordered input-primary w-full max-w-xs" required /><br />
                 <input type="text" name="imgurl" placeholder="Type here img url" className="input input-bordered input-primary w-full max-w-xs mt-2" required /><br />
-                <input type="text" name="price" placeholder="Type here price Minimum" className="input input-bordered input-primary w-full max-w-xs mt-2" required /><br />
                 <input type="text" name="location" placeholder=" location ex:(from madaripur to dhaka)" className="input input-bordered input-primary w-full max-w-xs mt-2" required /> <br />
                 <input type="email" name="email" placeholder={user?.email} className="input input-bordered input-primary w-full max-w-xs mt-2" readOnly /><br />
                 <textarea style={{width: '316px'}} name="description"  className="textarea textarea-primary   mt-2" placeholder="Add Your Desdcription" required></textarea><br />

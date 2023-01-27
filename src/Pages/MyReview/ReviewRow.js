@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const ReviewRow = ({ review, handleDelete }) => {
-    const { _id, cmntmsg, date, email, } = review;
-    console.log(review);
+    const { _id, cmntmsg, date, email } = review;
+    console.log( review);
 
     return (
         <tr>
-            <th>
+            <td>
                 <label>
                     <button onClick={() => handleDelete(_id)} className='btn btn-ghost'>Delete Now</button>
                 </label>
-            </th>
+            </td>
             <td>
                 <div className="flex   space-x-3">
                     <div>

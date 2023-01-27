@@ -19,7 +19,7 @@ const OurImageGallary = () => {
     // const image = [collectioneight,collectionone,two,collectionthree,collectionfour,collectionsix,collectionseven,collectionten,nine]
     return (
         <div>
-            <h2 className='text-3xl text-center my-14'>Our Image Gallary</h2>
+            <h2 className='text-3xl text-center my-14 mt-20'>Our Image Gallary</h2>
             <PhotoProvider> 
                 <div id="gallary" className="grid gap-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 justify-center align-middle">
                     <div className=''>

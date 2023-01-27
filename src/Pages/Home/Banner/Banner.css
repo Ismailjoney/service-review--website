@@ -1,9 +1,9 @@
-.carousel{
-    margin-top: 20px;
-    width:100%;
-    height:75%;
-}
-.carousel img{
+ #main{
     width: 100%;
-    height: 75%;
-}
+    height: 550px;
+ }
+
+ /* #main .carousel img{
+    width: 100%;
+    display: block;
+ } */

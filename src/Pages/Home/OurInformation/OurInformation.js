@@ -4,7 +4,7 @@ import React from 'react';
 const OurInformation = () => {
     return (
         <div>
-            <h2 className='text-3xl text-center my-2'>Our Bus And Company Information</h2>
+            <h2 className='text-3xl text-center my-2 mt-20'>Our Bus And Company Information</h2>
             <div className="flex justify-between">
                 <div className=" ">
                     <h2 className='text-2xl bold my-2'></h2>

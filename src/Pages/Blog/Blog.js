@@ -6,7 +6,7 @@ const Blog = () => {
             <div className="collapse px-7">
                 <input type="checkbox" />
                 <div className="collapse-title text-xl font-medium">
-                    Questions and answer
+                   Click Here And Read Questions and answer :
                 </div>
                 <div className="collapse-content">
                     <h2 className='font-bold text-3xl'>Difference between SQL and NoSQL</h2>

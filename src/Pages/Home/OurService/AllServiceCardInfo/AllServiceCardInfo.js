@@ -6,19 +6,26 @@ import Comments from './Comments';
 
 const AllServiceCardInfo = () => {
     const service = useLoaderData()
-    const {user} = useContext(AuthorContext)
+    const { user } = useContext(AuthorContext)
     const [comments, setComments] = useState([])
-    const {email} = user;
-    
     const { name, img, price, location, description, view_details, _id } = service;
-    const date = new Date()
+//     const date = moment().format("Do MMM YYYY h:mm:ss a");
+// const date = new Date();
+    const date = new Date( )
 
     const handdleSubmitComment = event => {
         event.preventDefault()
 
         const cmntmsg = event.target.text.value;
-        const id = _id
-        const commentmessage = { cmntmsg, id, date,email }
+
+        const commentmessage = {
+            cmntmsg,
+            id: _id,
+            date,
+            email : user?.email,
+        }
+        // console.log(commentmessage)
+        // console.log(date,email);
         event.target.reset()
 
         fetch(`http://localhost:5000/comments`, {
@@ -31,10 +38,6 @@ const AllServiceCardInfo = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                 
-                // if (data.acknowledged) {
-                    
-                // }
             })
             .catch(error => console.log(error))
     }
@@ -42,17 +45,16 @@ const AllServiceCardInfo = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/comments`)
             .then(res => res.json())
-            .then(data => {   
-                console.log(data)             
-                const productComments  = data.filter(d => d.id ===  _id)//--specific product er comment pacci(d.id hocce producut id)
-                const olderComents = comments.filter(cmnt => cmnt.id === _id)//--coments pacci
-                const newComment =[ olderComents, ...productComments, ]
+            .then(data => {
+                const productComments = data.filter(d => d.id === _id)
+                const olderComents = comments.filter(cmnt => cmnt.id === _id)
+                const newComment = [olderComents, ...productComments,]
                 setComments(newComment)
-               })
-    },[comments])
- 
+            })
+    }, [comments])
+
     return (
-        <div className='flex justify-evenly '>
+        <div className='flex lg:flex-row justify-evenly sm:flex-col'>
             <div className='flex justify-center mt-20 my-20'>
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <figure className="px-10 pt-10">
@@ -79,7 +81,7 @@ const AllServiceCardInfo = () => {
                 {
 
                     comments.map(comment => <Comments
-                        id={comment._id}
+                        key={comment._id}
                         comment={comment}
                     ></Comments>)
                 }
