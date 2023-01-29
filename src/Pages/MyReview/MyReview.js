@@ -1,31 +1,34 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { AuthorContext } from '../../Context/AuthContext';
 import Spinner from '../../Utilities/Spinner';
 import ReviewRow from './ReviewRow';
 
 const MyReview = () => {
-    const { user, loading, logout } = useContext(AuthorContext)
+    const { user, loading, logOut } = useContext(AuthorContext)
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/commentss?email=${user?.email}`,{
+        fetch(`https://service-review-website-server-jade.vercel.app/reviews?email=${user?.email}`, {
             headers: {
-                authoraization: `Bearer ${localStorage.getItem(`service-review`)}`
+                authorization: `Bearer ${localStorage.getItem('service-review')}`
             }
         })
             .then(res => {
-                if(res.status === 401 || res.status === 403){
-                   return logout()
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
                 }
-                return res.json()
+                return res.json();
             })
-            .then(data =>  setReviews(data))
-    }, [user?.email ])
+            .then(data => {
+                setReviews(data)
+            })
+    }, [user?.email, logOut])
 
 
     //delete review
     const handleDelete = id => {
-        fetch(`http://localhost:5000/reviewdelete/${id}`, {
+        fetch(`https://service-review-website-server-jade.vercel.app/reviewdelete/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -33,12 +36,14 @@ const MyReview = () => {
                 if (data.deletedCount > 0) {
                     const myNewCommens = reviews.filter(rvw => rvw._id !== id)
                     setReviews(myNewCommens)
+                    toast(`review delete sucessfull`)
                 }
             })
     }
 
     return (
         <div className="overflow-x-auto ">
+            <h2 className='text-3xl mt-3 my-3'>Your Total Review : {reviews?.length}</h2>
             <table className="table w-full mt-4">
                 <thead >
                     <tr>
@@ -51,8 +56,8 @@ const MyReview = () => {
                 <tbody  >
                     {
                         loading ? <Spinner></Spinner>
-                        :
-                            reviews.map(review => <ReviewRow
+                            :
+                            reviews?.map(review => <ReviewRow
                                 key={review._id}
                                 review={review}
                                 handleDelete={handleDelete}

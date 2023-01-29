@@ -2,8 +2,9 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import login from '../../assets/login.webp'
+import log from '../../assets/log.webp';
 import { AuthorContext } from '../../Context/AuthContext';
+import { setAuthJwt } from '../../Utilities/jwtapi/AuthJwtProcess';
 
 const Login = () => {
     const { singin, loginProvider, passReset } = useContext(AuthorContext)
@@ -25,26 +26,13 @@ const Login = () => {
         singin(email, password)
             .then(res => {
                 const user = res.user;
-                const userInfo = {
-                    email: user.email
-                }
-              
-                //jwt token emplement:
-                fetch(`http://localhost:5000/jwt`, {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json"
-                    },
-                    body: JSON.stringify(userInfo)
-                })
-                    .then(res => res.json()
-                        .then(data => {
-                            localStorage.setItem(`service-review`, data.token);
-                            
-                        }))
-                        navigate(from, { replace: true });
-                            form.reset()
-            })
+               
+                //jwt token emplement utilitis folder work:
+                setAuthJwt(user)
+                navigate(from, { replace: true });
+                        form.reset()
+                    })
+
             .catch(err => {
                 setError(err.message)
             })
@@ -56,7 +44,11 @@ const Login = () => {
         loginProvider(googleProvider)
             .then(res => {
                 const user = res.user;
-                navigate('/')
+
+                 //jwt token emplement utilitis folder work:
+                setAuthJwt(user)
+                navigate(from, { replace: true });
+                
             })
             .catch(error => {
                 console.error(error);
@@ -83,7 +75,7 @@ const Login = () => {
             <h2 className='text-3xl text-center mt-10 my-10'>LOgIn</h2>
             <div className='flex flex-col  justify-center align-center   mt-10 my-20   lg:flex-row lg:justify-around '>
                 <div className='m-auto mt-4'>
-                    <img className='w-90' src={login} alt="login" />
+                    <img className='w-full ' src={log} alt="login" />
                 </div>
                 <div className='m-auto mt-4'>
                     <form onSubmit={handleLogIn}>
@@ -95,7 +87,7 @@ const Login = () => {
                         <button className="btn btn-primary mt-4">Log in</button>
                     </form>
 
-                    <p> if yor forget your password <button onClick={handlePassReset} className="btn btn-link"><small>reset now</small></button> </p>
+                    <p> if yor forget your password <button onClick={handlePassReset} className="btn btn-link ml-0"><small className='ml-0'>reset now</small></button> </p>
                     <p>If you are new user please <Link className='text-primary' to='/reg'>registration</Link> now</p>
                     <button onClick={googleSingIn} className="btn btn-primary mt-4 ml-2">Log In With Google</button>
                 </div>

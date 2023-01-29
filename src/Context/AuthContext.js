@@ -29,8 +29,8 @@ const AuthContext = ({ children }) => {
     //     setLoading(true)
     //     return  updateProfile(auth.currentUser, userInfo)
     // }
-    const logOut = () => {
-        setLoading(true)
+    const logOut = () =>{
+        localStorage.removeItem('service-review');
         return signOut(auth);
     }
 

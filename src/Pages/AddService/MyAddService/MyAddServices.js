@@ -7,28 +7,31 @@ import Spinner from '../../../Utilities/Spinner';
 import MyServicesRow from './MyServicesRow';
 
 const MyAddServices = () => {
-    const { user, loading, logout } = useContext(AuthorContext)
+    const { user, loading,  logOut } = useContext(AuthorContext)
     const [services, setServices] = useState([])
-
-
+ 
+  
     useEffect(() => {
-        fetch(`http://localhost:5000/addservicess?email=${user?.email}`, {
+        fetch( `https://service-review-website-server-jade.vercel.app/addservicess?email=${user?.email}`,{
             headers: {
-                authoraization: `Bearer ${localStorage.getItem(`service-review`)}`
+                authorization: `Bearer ${localStorage.getItem('service-review')}`
             }
         })
             .then(res => {
-                if(res.status === 401 || res.status === 403){
-                   return logout()
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
                 }
-                return res.json()
+                return res.json();
             })
-            .then(data => setServices(data))
-    }, [user?.email, logout])
+            .then(data => {
+                //console.log( data);
+                setServices(data)
+            })
+    }, [user?.email,logOut ])
 
 
     const handdleServiceDelete = id => {
-        fetch(`http://localhost:5000/servicedelete/${id}`, {
+        fetch(`https://service-review-website-server-jade.vercel.app/servicedelete/${id}`, {
             method: 'Delete',
         })
             .then(res => res.json())
@@ -44,12 +47,12 @@ const MyAddServices = () => {
 
     return (
         <div>
-            <h2 className='text-center text-3xl bold mt-2 my-3'>Your Added Services  length: {services.length} </h2>
+            <h2 className='text-center text-3xl bold mt-2 my-4'>Your Added Services: {services?.length} </h2>
             <div className='pm-20'>
                 {
                    loading ? <Spinner></Spinner>
                    :
-                        services.map(service => <MyServicesRow
+                        services?.map(service => <MyServicesRow
                             key={service._id}
                             service={service}
                             handdleServiceDelete={handdleServiceDelete}

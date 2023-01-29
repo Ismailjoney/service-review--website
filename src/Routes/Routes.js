@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Login from "../FormInfo/LogIn/Login";
 import Registration from "../FormInfo/Registration/Registration";
 import Main from "../Layout/Main";
+import NotFound from "../notFound/NotFound";
 import AddService from "../Pages/AddService/AddService";
 import MyAddServices from "../Pages/AddService/MyAddService/MyAddServices";
 import Blog from "../Pages/Blog/Blog";
@@ -32,12 +33,12 @@ export const router = createBrowserRouter([
             {
                 path: '/showallservices',
                 element: <ShowAllServices></ShowAllServices>,
-                loader: () => (fetch('http://localhost:5000/allservice'))
+                loader: () => (fetch('https://service-review-website-server-jade.vercel.app/allservice'))
             },
             {
                 path: '/allservicecardinfo/:id',
                 element: <PrivetRoute><AllServiceCardInfo></AllServiceCardInfo></PrivetRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/service/${params.id}`)
+                loader: ({ params }) => fetch(`https://service-review-website-server-jade.vercel.app/service/${params.id}`)
             },
             {
                 path: '/login',
@@ -49,12 +50,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/review',
-                element: <MyReview></MyReview>,
-                // loader: () => )
+                element: <PrivetRoute><MyReview></MyReview></PrivetRoute>,
+
             },
             {
                 path: '/myaddservice',
-                element: <MyAddServices></MyAddServices>
+                element: <PrivetRoute><MyAddServices></MyAddServices></PrivetRoute>
+            },
+            {
+                path: '*',
+                element: <NotFound></NotFound>
             }
 
         ]

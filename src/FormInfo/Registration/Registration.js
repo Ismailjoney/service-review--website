@@ -1,7 +1,8 @@
 
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthorContext } from '../../Context/AuthContext';
+import { setAuthJwt } from '../../Utilities/jwtapi/AuthJwtProcess';
 
 
 const Registration = () => {
@@ -9,6 +10,7 @@ const Registration = () => {
     const [error, setError] = useState('')
     const { createUser,emailVerify,updateUserProfile } = useContext(AuthorContext)
     const navigate = useNavigate()
+    
  
 
     const handleRegSubmit = event => {
@@ -24,24 +26,23 @@ const Registration = () => {
             setError('please use atlest One digit') 
             return;
         }
+        
         //setError('') mane error kno kicu set korbe na 
         setError('')
 
         createUser(email, password)
             .then(resualt => {
                 const user = resualt.user;
-                console.log( user);
+
+                 //jwt token emplement utilitis folder work:
+                setAuthJwt(user)
                 form.reset()
 
                 emailVerify()
                 .then(() =>{
-                    alert(`please vefify your email`)
+                    alert(`please check your email and vefify now`)
                     navigate('/')
                 })
-                // updateUserProfile({displayName : name})
-                // .then(()=>console.log(`update `))
-                // .err(err => console.log(err))
-
             })
             .catch(error => {
                 setError(error.message);

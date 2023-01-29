@@ -16,62 +16,24 @@ import 'react-photo-view/dist/react-photo-view.css';
 
 const OurImageGallary = () => {
 
-    // const image = [collectioneight,collectionone,two,collectionthree,collectionfour,collectionsix,collectionseven,collectionten,nine]
+    const image = [collectioneight, collectionone, two, collectionthree, collectionfour, collectionsix, collectionseven, collectionten, nine]
+
     return (
         <div>
             <h2 className='text-3xl text-center my-14 mt-20'>Our Image Gallary</h2>
-            <PhotoProvider> 
-                <div id="gallary" className="grid gap-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 justify-center align-middle">
-                    <div className=''>
+
+            <div id="gallary" className="grid gap-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 justify-center align-middle">
+            {
+                image.map(img => <PhotoProvider>
+                    <div>
                         <PhotoView src={collectioneight} className="hover:border-spacing-14">
-                            <img src={collectioneight} alt="bus" />
+                            <img src={img} alt="bus" />
                         </PhotoView>
-                    </div>
-                    <div className=''>
-                        <PhotoView src={collectionone}>
-                            <img src={collectionone} alt="bus" />
-                        </PhotoView>
-                    </div>
-                    <div className=''>
-                        <PhotoView src={two} >
-                            <img src={two} alt="bus" />
-                        </PhotoView>
-                    </div>
-                    <div className=''>
-                        <PhotoView src={collectionthree}>
-                            <img src={collectionthree} alt="bus" />
-                        </PhotoView>
-                    </div>
-                    <div className=''>
-                        <PhotoView src={collectionfour}>
-                            <img src={collectionfour} alt="bus" />
-                        </PhotoView>
-                    </div>
-                    <div className=''>
-                        <PhotoView src={collectionsix}>
-                            <img src={collectionsix} alt="bus" />
-                        </PhotoView>
-                    </div>
-                    <div className=''>
-                        <PhotoView src={collectionseven}>
-                            <img src={collectionseven} alt="bus" />
-                        </PhotoView>
-                    </div>
-                    <div className=''>
-                        <PhotoView src={nine}>
-                            <img src={nine} alt="bus" />
-                        </PhotoView>
-                    </div>
-                    <div className=''>
-                        <PhotoView src={collectionten}>
-                            <img src={collectionten} alt="bus" />
-                        </PhotoView>
-                    </div>
-                </div>
-            </PhotoProvider>
-        </div>
-
-
+                    </div >
+                </PhotoProvider >)
+            }
+            </div >
+        </div >
     );
 };
 

@@ -9,10 +9,11 @@ const AllServiceCardInfo = () => {
     const { user } = useContext(AuthorContext)
     const [comments, setComments] = useState([])
     const { name, img, price, location, description, view_details, _id } = service;
-//     const date = moment().format("Do MMM YYYY h:mm:ss a");
-// const date = new Date();
-    const date = new Date( )
+    //     const date = moment().format("Do MMM YYYY h:mm:ss a");
+    // const date = new Date();
+    const date = new Date()
 
+    
     const handdleSubmitComment = event => {
         event.preventDefault()
 
@@ -22,13 +23,13 @@ const AllServiceCardInfo = () => {
             cmntmsg,
             id: _id,
             date,
-            email : user?.email,
+            email: user?.email,
         }
         // console.log(commentmessage)
         // console.log(date,email);
         event.target.reset()
 
-        fetch(`http://localhost:5000/comments`, {
+        fetch(`https://service-review-website-server-jade.vercel.app/comments`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +44,7 @@ const AllServiceCardInfo = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/comments`)
+        fetch(`https://service-review-website-server-jade.vercel.app/comments`)
             .then(res => res.json())
             .then(data => {
                 const productComments = data.filter(d => d.id === _id)
@@ -54,9 +55,9 @@ const AllServiceCardInfo = () => {
     }, [comments])
 
     return (
-        <div className='flex lg:flex-row justify-evenly sm:flex-col'>
-            <div className='flex justify-center mt-20 my-20'>
-                <div className="card w-96 bg-base-100 shadow-xl">
+        <div className='grid gap-6 lg:grid-cols-2  md:grid-cols-2 sm:grid-cols-1 sm:mt-0 sm:gap-0'>
+            <div className='flex justify-center mt-10  sm:mt-2'>
+                <div style={{height: `513px`}} className="card w-96   bg-base-100 shadow-xl block">
                     <figure className="px-10 pt-10">
                         <img style={{ width: '330px', height: '210px' }} src={img} alt="Shoes" className="rounded-xl" />
                     </figure>
@@ -70,22 +71,20 @@ const AllServiceCardInfo = () => {
                     </div>
                 </div>
             </div>
-            <div className='mt-20 my-20'>
+            <div className='my-0'>
                 <h2>Add Your Comment: </h2>
-                <div>
+                <div >
                     <form onSubmit={handdleSubmitComment} action="">
-                        <textarea name="text" className="textarea textarea-info w-96 mt-2" placeholder="add comment" required></textarea><br />
+                        <textarea name="text" className="textarea textarea-info w-96 mt-2 " placeholder="add comment" required></textarea><br />
                         <button className="btn  btn-sm btn-primary px-7 ">send</button>
                     </form>
+                    {
+                        comments.map(comment => <Comments
+                            key={comment._id}
+                            comment={comment}
+                        ></Comments>)
+                    }
                 </div>
-                {
-
-                    comments.map(comment => <Comments
-                        key={comment._id}
-                        comment={comment}
-                    ></Comments>)
-                }
-
             </div>
         </div>
     );

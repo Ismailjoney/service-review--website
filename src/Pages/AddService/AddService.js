@@ -25,7 +25,7 @@ const AddService = () => {
         }
         console.log(userservice);
 
-         fetch('http://localhost:5000/addservices', {
+         fetch('https://service-review-website-server-jade.vercel.app/addservices', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

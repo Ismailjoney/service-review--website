@@ -2,7 +2,7 @@ import React from 'react';
 
 const ReviewRow = ({ review, handleDelete }) => {
     const { _id, cmntmsg, date, email } = review;
-    console.log( review);
+     
 
     return (
         <tr>

@@ -4,7 +4,7 @@ const Comments = ({comment }) => {
     const{cmntmsg,date,email} = comment;
      
     return (
-        <div>
+        <div className='mt-0'>
             <p>{cmntmsg} <br /><span>{date}</span> <br /><span>{email}</span></p><br />
         </div>
     );
