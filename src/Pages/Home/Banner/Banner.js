@@ -1,36 +1,20 @@
 import React from 'react';
-import busone from '../../../assets/busone.webp'
-import bustwoo from '../../../assets/bustwoo.webp'
-import bussthreee from '../../../assets/bussthreee.webp'
-import './Banner.css'
- 
+import updatecover from '../../../assets/updatecover.jpg'
+import './banner.css'
+
 
 const Banner = () => {
-
-  return (
-        <div id="main" className="carousel w-full my-0">
-            <div id="slide1" className="carousel-item relative w-full">
-                <img  src={busone} className="w-full h-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-2/4">
-                    <a href="#slide4" className="btn btn-circle">❮</a>
-                    <a href="#slide2" className="btn btn-circle">❯</a>
+    return (
+        <div style={{background: `url(${updatecover})`, backgroundSize: 'cover'}} className="hero min-h-screen bg-base-200">
+            <div className="hero-content justify-start text-center">
+                <div className="max-w-md ">
+                    <h1 className="text-5xl font-bold text-white ">WellCome To Our Website</h1>
+                    <p className="py-6 text-white">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                 </div>
             </div>
-            <div id="slide2" className="carousel-item relative w-full">
-                <img src={bustwoo} className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide1" className="btn btn-circle">❮</a>
-                    <a href="#slide3" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide3" className="carousel-item relative w-full">
-                <img src={bussthreee} className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide2" className="btn btn-circle">❮</a>
-                    <a href="#slide4" className="btn btn-circle">❯</a>
-                </div>
-            </div> 
         </div>
+
+
     );
 };
 

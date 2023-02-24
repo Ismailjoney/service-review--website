@@ -72,7 +72,7 @@ const Login = () => {
 
     return (
         <div >
-            <h2 className='text-3xl text-center mt-10 my-10'>LOgIn</h2>
+            <h2 className='text-3xl text-center mt-10 my-10 font-bold'>LogIn Now</h2>
             <div className='flex flex-col  justify-center align-center   mt-10 my-20   lg:flex-row lg:justify-around '>
                 <div className='m-auto mt-4'>
                     <img className='w-full ' src={log} alt="login" />

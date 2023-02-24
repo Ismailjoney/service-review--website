@@ -54,7 +54,7 @@ const Registration = () => {
 
 return (
     <div className='mt-10'>
-        <h2 className='text-3xl text-center my-10'>Registration</h2>
+        <h2 className='text-3xl font-bold text-center my-10'>Registration Now</h2>
         <div className='mt-4 w-full'>
             <div className='lg:w-1/2 mx-auto sm:w-full'>
                 <form className='lg:w-1/2 mx-auto' onSubmit={handleRegSubmit} >

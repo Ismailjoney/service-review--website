@@ -15,8 +15,8 @@ const OurService = () => {
     }, [])
     return (
         <div className='mt-20 my-23'>
-            <h2 className='text-center text-3xl'>OUR SERVICE </h2>
-            <div className='grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 '>
+            <h2 className='text-center text-3xl font-bold text-white'>OUR SERVICE </h2>
+            <div className='grid grid-cols-1 justify-items-center gap-6 lg:grid-cols-3 md:grid-cols-2  '>
                 {
                    
                     loading ?  <Spinner></Spinner>

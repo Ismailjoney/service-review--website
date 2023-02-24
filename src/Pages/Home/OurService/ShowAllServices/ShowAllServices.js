@@ -7,7 +7,7 @@ const ShowAllServices = () => {
      
     return (
         <div className='mt-8 my-28'>
-            <h2 className='text-center text-3xl'>OUR SERVICE </h2>
+            <h2 className='text-center text-white font-bold text-3xl'>OUR SERVICES </h2>
              <div className='grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 '>
                 {
                     datas.map(data => <ShowAllServiceCard
